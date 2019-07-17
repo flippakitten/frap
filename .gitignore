@@ -12,3 +12,4 @@
 
 # IDEs
 .idea
+*.gem
