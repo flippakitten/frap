@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    frapp (0.0.1)
+    frap (0.0.1)
 
 GEM
   remote: https://rubygems.org/
@@ -27,7 +27,7 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 2.0)
-  frapp!
+  frap!
   rake (~> 10.0)
   rspec (~> 3.0)
 

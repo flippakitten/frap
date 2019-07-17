@@ -1,4 +1,4 @@
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in frapp.gemspec
+# Specify your gem's dependencies in frap.gemspec
 gemspec

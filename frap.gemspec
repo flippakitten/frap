@@ -1,11 +1,11 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "frapp/version"
+require "frap/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "frapp"
-  spec.version       = Frapp::VERSION
+  spec.name          = "frap"
+  spec.version       = Frap::VERSION
   spec.authors       = ["James Gascoigne - Taylor"]
   spec.email         = ["james@flippakitten.com"]
 
@@ -29,7 +29,7 @@ Gem::Specification.new do |spec|
     `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   end
   spec.bindir        = "bin"
-  spec.executables   = ['frapp']
+  spec.executables   = ['frap']
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 2.0"

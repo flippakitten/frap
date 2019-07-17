@@ -1,4 +1,4 @@
-# Frapp
+# Frap
 
 Note: This is the absolute beginning of the app. **Version 0.1.0 will have the basic app creation**
 CLI interface to quickly prototype Flutter App's using the BLoC pattern with a Rails API server. 
@@ -8,15 +8,15 @@ CLI interface to quickly prototype Flutter App's using the BLoC pattern with a R
 
 Install:
 
-    $ gem install frapp
+    $ gem install frap
 
 ## Usage
 
 Check the version  
-`frapp --version`
+`frap --version`
 
 Create a new Flutter and Rails app.  
-`frapp new my_app`  
+`frap new my_app`  
 Note: This is still in development however this will create a new Parent directory for the Rails and Flutter App.  
 ```
 |__ my_app  
@@ -33,7 +33,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/flippakitten/frapp. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/flippakitten/frap. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
@@ -41,4 +41,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Frapp project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/flippakitten/frapp/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Frap project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/flippakitten/frap/blob/master/CODE_OF_CONDUCT.md).

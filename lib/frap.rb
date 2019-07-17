@@ -1,6 +1,6 @@
-require "frapp/version"
+require "frap/version"
 
-module Frapp
+module Frap
   class Error < StandardError; end
 
   class CreateApp

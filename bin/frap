@@ -1,11 +1,11 @@
 #!/usr/bin/env ruby
-require 'frapp'
+require 'frap'
 require 'optparse'
 
 options = {}
 
 opt_parser = OptionParser.new do |opt|
-  opt.banner = "Usage: frapp COMMAND [OPTIONS]"
+  opt.banner = "Usage: frap COMMAND [OPTIONS]"
   opt.separator  ""
   opt.separator  "Commands"
   opt.separator  "     new: create a new Flutter and Rails app (requires app name as second argument"
@@ -27,15 +27,15 @@ opt_parser.parse!
 case ARGV[0]
 when "new"
   unless ARGV[1]
-    puts "ERROR: Please specify an app path `frapp new APP_PATH`"
+    puts "ERROR: Please specify an app path `frap new APP_PATH`"
     return
   end
 
-  Frapp::CreateApp.new(ARGV[1]).build
+  Frap::CreateApp.new(ARGV[1]).build
 when 'g'
 when "generate"
   unless ARGV[1]
-    puts "ERROR: Please specify a generator function `frapp g resource MyResource -f name:string`"
+    puts "ERROR: Please specify a generator function `frap g resource MyResource -f name:string`"
     return
   end
   puts "generate #{ARGV[1]} #{options[:fields]}"

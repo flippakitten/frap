@@ -1,3 +1,3 @@
-module Frapp
+module Frap
   VERSION = "0.0.1"
 end
