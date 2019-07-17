@@ -1,28 +1,29 @@
 # Frapp
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/frapp`. To experiment with that code, run `bin/console` for an interactive prompt.
+Note: This is the absolute beginning of the app. **Version 0.1.0 will have the basic app creation**
+CLI interface to quickly prototype Flutter App's using the BLoC pattern with a Rails API server. 
 
-TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'frapp'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
+Install:
 
     $ gem install frapp
 
 ## Usage
 
-TODO: Write usage instructions here
+Check the version  
+`frapp --version`
+
+Create a new Flutter and Rails app.  
+`frapp new my_app`  
+Note: This is still in development however this will create a new Parent directory for the Rails and Flutter App.  
+```
+|__ my_app  
+  |__ my_app_server  
+  |__ my_app_ui
+```
+
 
 ## Development
 
@@ -32,7 +33,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/frapp. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/flippakitten/frapp. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
@@ -40,4 +41,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Frapp project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/frapp/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Frapp project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/flippakitten/frapp/blob/master/CODE_OF_CONDUCT.md).
