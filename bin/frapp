@@ -1,0 +1,44 @@
+#!/usr/bin/env ruby
+require 'frapp'
+require 'optparse'
+
+options = {}
+
+opt_parser = OptionParser.new do |opt|
+  opt.banner = "Usage: frapp COMMAND [OPTIONS]"
+  opt.separator  ""
+  opt.separator  "Commands"
+  opt.separator  "     new: create a new Flutter and Rails app (requires app name as second argument"
+  opt.separator  "     generate: generates a template"
+  opt.separator  ""
+  opt.separator  "Options"
+
+  opt.on("-f","--fields FIELDS","comman separated list of fields with types") do |fields|
+    options[:fields] = fields
+  end
+
+  opt.on("-h","--help","help") do
+    puts opt_parser
+  end
+end
+
+opt_parser.parse!
+
+case ARGV[0]
+when "new"
+  unless ARGV[1]
+    puts "ERROR: Please specify an app path `frapp new APP_PATH`"
+    return
+  end
+
+  Frapp::CreateApp.new(ARGV[1]).build
+when 'g'
+when "generate"
+  unless ARGV[1]
+    puts "ERROR: Please specify a generator function `frapp g resource MyResource -f name:string`"
+    return
+  end
+  puts "generate #{ARGV[1]} #{options[:fields]}"
+else
+  puts opt_parser
+end
