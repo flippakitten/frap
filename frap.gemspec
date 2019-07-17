@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Flutter and Rails App Generators}
   spec.description   = %q{CLI to create a Flutter App backed with a Rails server for quick app protoyping}
-  spec.homepage      = "https://github.com/flippakitten/frapp"
+  spec.homepage      = "https://github.com/flippakitten/frap"
   spec.license       = "MIT"
 
   if spec.respond_to?(:metadata)
