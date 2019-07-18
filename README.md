@@ -1,7 +1,11 @@
 [![Build Status](https://travis-ci.com/flippakitten/frap.svg?branch=master)](https://travis-ci.com/flippakitten/frap)
+[![Gem Version](https://badge.fury.io/rb/frap.svg)](https://badge.fury.io/rb/frap)
 # Frap 
-CLI interface to quickly prototype Flutter App's using the BLoC pattern with a Rails API server. 
+CLI interface to quickly prototype Flutter App's using the BLoC pattern with a Rails API server.  
 **Note:** This is the absolute beginning of the app. **Version 0.1.0 will have the basic app creation**
+
+[changelog](https://github.com/flippakitten/frap/wiki/Change-Log-Published)  
+[roadmap](https://github.com/flippakitten/frap/wiki/Roadmap)  
 
 ## Prerequisites
 While building the CLI, we will be using [slidy](https://pub.dev/packages/slidy) CLI. This will mean initially there will be some limitations, there is a plan to remove the dependancy in later versions.  
