@@ -25,7 +25,7 @@ Install:
 ## Usage
 
 Check the version  
-`frap --version`
+`frap --version` _(not implemented)_
 
 Create a new Flutter and Rails app.  
 `frap new my_app`  
