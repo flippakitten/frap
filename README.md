@@ -1,4 +1,5 @@
-# Frap
+[![Build Status](https://travis-ci.com/flippakitten/frap.svg?branch=master)](https://travis-ci.com/flippakitten/frap)
+# Frap 
 
 Note: This is the absolute beginning of the app. **Version 0.1.0 will have the basic app creation**
 CLI interface to quickly prototype Flutter App's using the BLoC pattern with a Rails API server. 
