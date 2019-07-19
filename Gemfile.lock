@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     frap (0.0.3)
+      thor (~> 0.20.3)
 
 GEM
   remote: https://rubygems.org/
@@ -21,6 +22,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.7.0)
     rspec-support (3.7.1)
+    thor (0.20.3)
 
 PLATFORMS
   ruby
