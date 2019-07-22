@@ -12,4 +12,7 @@
 
 # IDEs
 .idea
+
 *.gem
+/test_app/**/*
+

@@ -13,8 +13,17 @@ module Frap
         File.dirname(__FILE__) + '/templates'
       end
 
+      def configure_directories
+        invoke :create_app_dir
+      end
+
+      def create_app_dir
+        empty_directory(name)
+        invoke :create_config_file
+      end
+
       def create_config_file
-        template('config.erb', 'config.yml')
+        template('config.erb', "#{name}/config.yml")
       end
     end
   end

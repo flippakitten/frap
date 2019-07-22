@@ -20,42 +20,57 @@ module Frap
     private
 
     def setup_parent_directory
-      puts "1 ================ Create Parent Directory #{name}"
+      shell.say(shell_text("Create Parent Directory #{name}"), :green)
 
-      gen = Frap::Generators::Config.new([name])
-      gen.destination_root = working_dir
-      gen.invoke_all
+      Frap::Generators::Config.new(
+        [name],
+        options: {
+          destination_root: Dir.pwd
+        }
+      ).invoke(:configure_directories)
     end
 
     def create_rails_api_server
-      puts "2 ================ Rails new #{name}_server --api"
+      shell.say(shell_text("Rails new #{name}_server --api -T"), :green)
       Dir.chdir(working_dir)
 
-      system("rails new #{name}_server --api -T")
+      Kernel.system("rails new #{name}_server --api -T")
     end
 
     def create_flutter_app
-      puts "3 ================ Flutter create app #{name}_ui"
+      shell.say(shell_text("Flutter create app #{name}_ui"), :green)
+
       Dir.chdir(working_dir)
-      system("flutter create #{name}_ui")
+      Kernel.system("flutter create #{name}_ui")
     end
 
     def setup_bloc_pattern
-      puts '4 ================ Setup BLoC pattern using Slidy'
+      shell.say(shell_text('Setup BLoC pattern using Slidy'), :green)
       Dir.chdir("#{working_dir}/#{name}_ui")
-      system('rm -rf lib/')
-      system('mkdir lib')
-      system('slidy start')
+      Kernel.system('rm -rf lib/')
+      Kernel.system('mkdir lib')
+      Kernel.system('slidy start')
       Dir.chdir(working_dir)
     end
 
     def show_completed_notes
-      puts '================================='
-      puts 'TODO: Install your favourite Rails Testing library'
+      shell.say(shell_text('DONE'), :green)
+      shell.say('TODO: Install your favourite Rails Testing library', :yellow)
     end
 
     def working_dir
       @working_dir ||= "#{Dir.pwd}/#{name}"
+    end
+
+    def shell
+      @shell ||= Thor::Shell::Color.new
+    end
+
+    def shell_text(text)
+      "#{spacer} #{text} #{spacer}"
+    end
+    def spacer
+      '================'
     end
   end
 end
