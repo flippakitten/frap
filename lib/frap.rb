@@ -2,11 +2,20 @@ require 'frap/version'
 require 'frap/create_app'
 require 'frap/generators/generate'
 require 'frap/generators/config'
+require 'frap/generators/flutter_config'
 require 'thor'
 require 'yaml'
 
 module Frap
   class CLI < Thor
+    desc 'version', 'Display MyGem version'
+    map %w[-v --version] => :version
+    class_option 'verbose', type: :boolean, default: false
+
+    def version
+      say "Frap #{Frap::VERSION}"
+    end
+
     desc 'new APP_NAME', 'Lower cased underscored app name'
     long_desc <<-LONGDESC
       Using the "app_name", it will create the parent directory and the Rails and Flutter sub directories, 
@@ -22,10 +31,5 @@ module Frap
       run `frap g help` to see a list of existing generators
     LONGDESC
     subcommand 'generate', Frap::Generators::Generate
-
-    desc 'temp NAME', 'does something temporary'
-    def temp(name)
-      Frap::Generators::Config.new([name]).invoke_all
-    end
   end
 end
