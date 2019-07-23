@@ -55,7 +55,7 @@ module Frap
       ).invoke(:configure_directories)
 
       Dir.chdir("#{working_dir}/#{ui_name}")
-      system('git init && flutter pub get')
+      Kernel.system('git init && flutter pub get')
       Dir.chdir(working_dir)
     end
 
