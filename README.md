@@ -8,11 +8,9 @@ CLI interface to quickly prototype Flutter App's using the BLoC pattern with a R
 [roadmap](https://github.com/flippakitten/frap/wiki/Roadmap)  
 
 ## Prerequisites
-While building the CLI, we will be using [slidy](https://pub.dev/packages/slidy) CLI. This will mean initially there will be some limitations, there is a plan to remove the dependancy in later versions.  
 
 Ensure the following are installed:
 * [Flutter](https://flutter.dev/docs/get-started/install)
-* [Slidy](https://pub.dev/packages/slidy#instalation)
 * [Ruby 2.6.1](https://rvm.io/rvm/install) (I've used RVM but you can install it anyway)
 * Rails
 

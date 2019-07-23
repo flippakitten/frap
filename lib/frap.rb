@@ -2,6 +2,7 @@ require 'frap/version'
 require 'frap/create_app'
 require 'frap/generators/generate'
 require 'frap/generators/config'
+require 'frap/generators/flutter_config'
 require 'thor'
 require 'yaml'
 
