@@ -4,7 +4,7 @@
 CLI interface to quickly prototype Flutter App's using the BLoC pattern with a Rails API server.  
 
 [changelog](https://github.com/flippakitten/frap/wiki/Change-Log-Published)  
-[roadmap](https://github.com/flippakitten/frap/wiki/Roadmap)  
+[roadmap](https://github.com/flippakitten/frap/projects/1)  
 
 ## Prerequisites
 
