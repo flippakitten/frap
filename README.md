@@ -2,7 +2,6 @@
 [![Gem Version](https://badge.fury.io/rb/frap.svg)](https://badge.fury.io/rb/frap) [![Join the chat at https://gitter.im/frap-flutter-rails-cli/community](https://badges.gitter.im/frap-flutter-rails-cli/community.svg)](https://gitter.im/frap-flutter-rails-cli/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 # Frap 
 CLI interface to quickly prototype Flutter App's using the BLoC pattern with a Rails API server.  
-**Note:** At the moment the app creation works however there is a reliance on a 3rd party Dart App "slidy". The plan is to remove the reliance.
 
 [changelog](https://github.com/flippakitten/frap/wiki/Change-Log-Published)  
 [roadmap](https://github.com/flippakitten/frap/wiki/Roadmap)  
