@@ -1,7 +1,3 @@
-
-require 'thor'
-require 'thor/group'
-
 module Frap
   module Generators
     class FlutterConfig < Thor::Group

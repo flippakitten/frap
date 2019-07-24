@@ -1,6 +1,7 @@
 require 'frap/version'
 require 'frap/create_app'
-require 'frap/generators/generate'
+require 'frap/create_resource'
+require 'frap/commands/generate'
 require 'frap/generators/config'
 require 'frap/generators/flutter_config'
 require 'thor'
@@ -30,6 +31,6 @@ module Frap
       Generate all the boiler plate code such as controllers, pages and blocks for Rails and Flutter.
       run `frap g help` to see a list of existing generators
     LONGDESC
-    subcommand 'generate', Frap::Generators::Generate
+    subcommand 'generate', Frap::Commands::Generate
   end
 end

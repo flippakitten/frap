@@ -1,6 +1,3 @@
-require 'thor'
-require 'frap/generators/config'
-
 module Frap
   class CreateApp
     attr_accessor :name
@@ -60,8 +57,23 @@ module Frap
     end
 
     def show_completed_notes
-      shell.say(shell_text('DONE'), :green)
+      shell.say(shell_text('YAY! App setup complete!'), :green)
       shell.say('TODO: Install your favourite Rails Testing library', :yellow)
+      shell.say(shell_text(''), :green)
+
+      shell.say('Generate Some resources:', :yellow)
+      shell.say("cd #{working_dir}", :green)
+      shell.say('frap generate resource user --attributes name:string age:integer', :green)
+
+      shell.say('Start the rails serve:', :yellow)
+      shell.say("cd #{working_dir}/#{server_name}", :green)
+      shell.say("rails s", :green)
+
+      shell.say('Start the Flutter App:', :yellow)
+      shell.say("cd #{working_dir}/#{ui_name}", :green)
+      shell.say("flutter run", :green)
+
+      shell.say(shell_text('========================'), :green)
     end
 
     def server_name
