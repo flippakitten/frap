@@ -18,18 +18,31 @@ module Frap
       end
 
       def create_directories
-        empty_directory("#{lib_directory}/src/home")
+        empty_directory("#{lib_directory}/src/animations")
+        empty_directory("#{lib_directory}/src/config")
+        empty_directory("#{lib_directory}/src/constants")
+        empty_directory("#{lib_directory}/src/screens")
+        empty_directory("#{lib_directory}/src/widgets")
         invoke :create_files
       end
 
       def create_files
         template('main.dart.erb', "#{lib_directory}/main.dart")
-        template('src/app_bloc.dart.erb', "#{src_directory}/app_bloc.dart")
-        template('src/app_module.dart.erb', "#{src_directory}/app_module.dart")
-        template('src/app_widget.dart.erb', "#{src_directory}/app_widget.dart")
-        template('src/home/home_bloc.dart.erb', "#{src_directory}/home/home_bloc.dart")
-        template('src/home/home_module.dart.erb', "#{src_directory}/home/home_module.dart")
-        template('src/home/home_page.dart.erb', "#{src_directory}/home/home_page.dart")
+        template('src/app.dart.erb', "#{src_directory}/app.dart")
+        template('src/animations/slide_right_route.dart.erb', "#{src_directory}/animations/slide_right_route.dart")
+        template('src/config.dart.erb', "#{src_directory}/config/router.dart")
+        template('src/constants/pages_list.dart.erb', "#{src_directory}/constants/pages_list.dart")
+        template('src/constants/routing.dart.erb', "#{src_directory}/constants/routing.dart")
+        template('src/screens/base.dart.erb', "#{src_directory}/screens/home.dart")
+        template('src/screens/undefined_route.dart.erb', "#{src_directory}/screens/undefined_route.dart")
+        template('src/widgets/base_app_bar.dart.erb', "#{src_directory}/widgets/base_app_bar.dart")
+        template('src/widgets/popup_menu_widget.dart.erb', "#{src_directory}/widgets/popup_menu_widget.dart")
+      end
+
+      def setup_pages
+        inject_into_file("#{src_directory}/constants/router.dart", home_router, after: /switch (settings\.name) {.*$/)
+        inject_into_file("#{src_directory}/constants/pages_list.dart", home_route, after: /const List<Page> pages = const <Page>\[.*$/)
+        append_to_file("#{src_directory}/constants/routing.dart", "const String HomeScreenRoute = '/';")
       end
 
       private
@@ -51,6 +64,17 @@ module Frap
   dio: ^2.1.13
   rxdart: ^0.22.0
   bloc_pattern: ^2.2.3)
+      end
+
+      def home_router
+        %Q(
+     case HomeScreenRoute:
+      return SlideRightRoute(widget:HomeScreen());)
+      end
+
+      def home_route
+        %Q(
+     const Page(title: 'Home', icon: Icons.home, route: HomeScreenRoute),)
       end
     end
   end

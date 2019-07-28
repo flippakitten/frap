@@ -17,7 +17,7 @@ module Frap
     private
 
     def generate_rails_resource
-      Dir.chdir("#{working_dir}/#{}")
+      Dir.chdir("#{working_dir}/#{rails_app}")
 
       system("rails generate resource #{name} #{fields}")
     end
@@ -34,6 +34,7 @@ module Frap
 
     def build_fields
       return unless options[:attributes]
+
       fields_string = ''
       options[:attributes].each { |k, v| fields_string << "#{k}:#{v} " }
 
