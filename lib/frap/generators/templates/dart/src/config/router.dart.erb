@@ -1,0 +1,16 @@
+import 'package:flutter/material.dart';
+
+import 'package:frap_flutter_base/src/animations/slide_right_route.dart';
+import 'package:frap_flutter_base/src/constants/routing_constants.dart';
+import 'package:frap_flutter_base/src/screens/home_screen.dart';
+import 'package:frap_flutter_base/src/screens/user_screen.dart';
+import 'package:frap_flutter_base/src/screens/login_screen.dart';
+import 'package:frap_flutter_base/src/screens/undefined_route_screen.dart';
+
+
+Route<dynamic> generateRoute(RouteSettings settings) {
+  switch (settings.name) {
+    default:
+      return SlideRightRoute(widget:UndefinedRouteScreen());
+  }
+}

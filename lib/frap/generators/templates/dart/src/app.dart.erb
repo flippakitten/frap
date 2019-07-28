@@ -1,0 +1,26 @@
+import 'package:flutter/material.dart';
+import 'package:<%= folder_name %>/src/screens/undefined_route_screen.dart';
+import 'package:<%= folder_name %>/screens/home_screen.dart';
+import 'package:<%= folder_name %>/config/router.dart' as router;
+import 'package:<%= folder_name %>/constants/routing.dart';
+
+class App extends StatelessWidget {
+  @override
+
+  static const String _title = <%= folder_name %>;
+
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: _title,
+      theme: ThemeData.light(),
+      home: HomeScreen(),
+      initialRoute: HomeScreenRoute,
+      onGenerateRoute: router.generateRoute,
+      onUnknownRoute: (settings) => MaterialPageRoute(
+          builder: (context) => UndefinedRouteScreen(
+            name: settings.name,
+          )
+      ),
+    );
+  }
+}

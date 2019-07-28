@@ -1,0 +1,34 @@
+import 'package:flutter/material.dart';
+import 'package:<%= folder_name %>/src/constants/pages_list.dart';
+import 'package:<%= folder_name %>/src/constants/routing.dart';
+
+class PopupMenuWidget extends StatefulWidget {
+  @override
+  _PopupMenuWidgetState createState() => _PopupMenuWidgetState();
+}
+
+class _PopupMenuWidgetState extends State<PopupMenuWidget> {
+  @override
+
+  _onSelect(Page page) {
+    if (page.route == LoginScreenRoute) {
+      Navigator.pushReplacementNamed(context, page.route);
+    } else {
+      Navigator.pushNamed(context, page.route);
+    }
+  }
+
+  Widget build(BuildContext context) {
+    return PopupMenuButton<Page>(
+      onSelected: _onSelect,
+      itemBuilder: (BuildContext context) {
+        return pages.map((Page page) {
+          return PopupMenuItem<Page>(
+            value: page,
+            child: Text(page.title),
+          );
+        }).toList();
+      },
+    );
+  }
+}
