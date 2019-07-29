@@ -1,0 +1,14 @@
+import 'package:flutter/material.dart';
+
+import 'package:<%= folder_name %>/src/animations/slide_right_route.dart';
+import 'package:<%= folder_name %>/src/constants/routing.dart';
+import 'package:<%= folder_name %>/src/screens/home_screen.dart';
+import 'package:<%= folder_name %>/src/screens/undefined_route_screen.dart';
+
+
+Route<dynamic> generateRoute(RouteSettings settings) {
+  switch (settings.name) {
+    default:
+      return SlideRightRoute(widget:UndefinedRouteScreen());
+  }
+}

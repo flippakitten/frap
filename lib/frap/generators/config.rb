@@ -1,6 +1,3 @@
-require 'thor'
-require 'thor/group'
-
 module Frap
   module Generators
     class Config < Thor::Group

@@ -1,0 +1,23 @@
+import 'package:flutter/material.dart';
+import 'package:<%= folder_name %>/src/constants/routing.dart';
+import 'package:<%= folder_name %>/src/widgets/base_app_bar.dart';
+import 'package:<%= folder_name %>/src/widgets/popup_menu_widget.dart';
+
+class HomeScreen extends StatelessWidget {
+  @override
+
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: BaseAppBar(
+        title: Text('<%= name %>'),
+        appBar: AppBar(),
+        widgets: <Widget>[
+          PopupMenuWidget(),
+        ],
+      ),
+      body: Center(
+        child: Text('<%= name %>'),
+      ),
+    );
+  }
+}

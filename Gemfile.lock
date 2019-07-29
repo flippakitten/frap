@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    frap (0.1.1)
+    frap (0.2.0)
       thor (~> 0.20.3)
 
 GEM

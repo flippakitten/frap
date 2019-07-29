@@ -1,8 +1,7 @@
 require 'thor'
-require 'frap/generators/resource'
 
 module Frap
-  module Generators
+  module Commands
     class Generate < Thor
       desc 'resource NAME', 'generate a resource'
       method_option :rails, type: :boolean, aliases: :r, default: true
@@ -10,7 +9,7 @@ module Frap
       method_option :attributes, type: :hash, aliases: :a
 
       def resource(name)
-        Frap::Generators::Resource.new(name, options).create_resource
+        Frap::CreateResource.new(name, options).create_resource
       end
     end
   end
