@@ -42,9 +42,8 @@ module Frap
       end
 
       def setup_pages
-        inject_into_file("#{src_directory}/config/router.dart", home_router, after: /switch (settings\.name) {.*$/)
+        inject_into_file("#{src_directory}/config/router.dart", home_router, after: /^.*switch \(settings.name\) \{$/)
         inject_into_file("#{src_directory}/constants/pages_list.dart", home_route, after: /const List<Page> pages = const <Page>\[.*$/)
-        append_to_file("#{src_directory}/constants/routing.dart", "const String HomeScreenRoute = '/';")
         append_to_file("#{src_directory}/constants/routing.dart", "const String HomeScreenRoute = '/';")
       end
 
