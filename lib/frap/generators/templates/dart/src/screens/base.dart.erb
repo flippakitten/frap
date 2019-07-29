@@ -9,14 +9,14 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: BaseAppBar(
-        title: Text(<%= name %>),
+        title: Text('<%= name %>'),
         appBar: AppBar(),
         widgets: <Widget>[
           PopupMenuWidget(),
         ],
       ),
       body: Center(
-        child: Text(<%= name %>),
+        child: Text('<%= name %>'),
       ),
     );
   }

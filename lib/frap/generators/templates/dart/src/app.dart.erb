@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:<%= folder_name %>/src/screens/undefined_route_screen.dart';
-import 'package:<%= folder_name %>/screens/home_screen.dart';
-import 'package:<%= folder_name %>/config/router.dart' as router;
-import 'package:<%= folder_name %>/constants/routing.dart';
+import 'package:<%= folder_name %>/src/screens/home_screen.dart';
+import 'package:<%= folder_name %>/src/config/router.dart' as router;
+import 'package:<%= folder_name %>/src/constants/routing.dart';
 
 class App extends StatelessWidget {
   @override
 
-  static const String _title = <%= folder_name %>;
+  static const String _title = '<%= folder_name %>';
 
   Widget build(BuildContext context) {
     return MaterialApp(

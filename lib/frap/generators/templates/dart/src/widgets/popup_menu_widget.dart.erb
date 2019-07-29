@@ -11,11 +11,7 @@ class _PopupMenuWidgetState extends State<PopupMenuWidget> {
   @override
 
   _onSelect(Page page) {
-    if (page.route == LoginScreenRoute) {
-      Navigator.pushReplacementNamed(context, page.route);
-    } else {
-      Navigator.pushNamed(context, page.route);
-    }
+    Navigator.pushNamed(context, page.route);
   }
 
   Widget build(BuildContext context) {

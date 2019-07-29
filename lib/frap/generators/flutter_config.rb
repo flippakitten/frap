@@ -30,18 +30,21 @@ module Frap
         template('main.dart.erb', "#{lib_directory}/main.dart")
         template('src/app.dart.erb', "#{src_directory}/app.dart")
         template('src/animations/slide_right_route.dart.erb', "#{src_directory}/animations/slide_right_route.dart")
-        template('src/config.dart.erb', "#{src_directory}/config/router.dart")
+        template('src/config/router.dart.erb', "#{src_directory}/config/router.dart")
         template('src/constants/pages_list.dart.erb', "#{src_directory}/constants/pages_list.dart")
         template('src/constants/routing.dart.erb', "#{src_directory}/constants/routing.dart")
-        template('src/screens/base.dart.erb', "#{src_directory}/screens/home.dart")
-        template('src/screens/undefined_route.dart.erb', "#{src_directory}/screens/undefined_route.dart")
+        template('src/screens/base.dart.erb', "#{src_directory}/screens/home_screen.dart")
+        template('src/screens/undefined_route_screen.dart.erb', "#{src_directory}/screens/undefined_route_screen.dart")
         template('src/widgets/base_app_bar.dart.erb', "#{src_directory}/widgets/base_app_bar.dart")
         template('src/widgets/popup_menu_widget.dart.erb', "#{src_directory}/widgets/popup_menu_widget.dart")
+
+        invoke :setup_pages
       end
 
       def setup_pages
-        inject_into_file("#{src_directory}/constants/router.dart", home_router, after: /switch (settings\.name) {.*$/)
+        inject_into_file("#{src_directory}/config/router.dart", home_router, after: /switch (settings\.name) {.*$/)
         inject_into_file("#{src_directory}/constants/pages_list.dart", home_route, after: /const List<Page> pages = const <Page>\[.*$/)
+        append_to_file("#{src_directory}/constants/routing.dart", "const String HomeScreenRoute = '/';")
         append_to_file("#{src_directory}/constants/routing.dart", "const String HomeScreenRoute = '/';")
       end
 
