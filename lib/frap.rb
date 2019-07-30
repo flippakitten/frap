@@ -4,6 +4,7 @@ require 'frap/create_resource'
 require 'frap/commands/generate'
 require 'frap/generators/config'
 require 'frap/generators/flutter_config'
+require 'frap/generators/flutter_resource'
 require 'thor'
 require 'yaml'
 

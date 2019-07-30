@@ -1,0 +1,30 @@
+import 'package:flutter/material.dart';
+import 'package:<%= flutter_app_dir %>/src/constants/routing.dart';
+import 'package:<%= flutter_app_dir %>/src/widgets/base_app_bar.dart';
+import 'package:<%= flutter_app_dir %>/src/widgets/popup_menu_widget.dart';
+
+class <%= name %>IndexScreen extends StatelessWidget {
+  @override
+
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: BaseAppBar(
+        title: Text('<%= name %>'),
+        appBar: AppBar(),
+        widgets: <Widget>[
+          PopupMenuWidget(),
+        ],
+      ),
+      body: Center(
+        child: Text('<%= name %>'),
+      ),
+      floatingActionButton: FloatingActionButton(
+          elevation: 0.0,
+          child: Icon(Icons.add),
+          backgroundColor: Colors.red,
+          foregroundColor: Colors.white,
+          onPressed: (){ }
+      ),
+    );
+  }
+}

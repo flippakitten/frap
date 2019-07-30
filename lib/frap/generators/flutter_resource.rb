@@ -1,3 +1,5 @@
+require 'active_support/inflector'
+
 module Frap
   module Generators
     class FlutterResource < Thor::Group
@@ -5,37 +7,47 @@ module Frap
 
       desc 'Generate Flutter Config files'
       argument :name
-      argument :folder_name
+      argument :flutter_app_dir
 
       def self.source_root
         File.dirname(__FILE__) + '/templates/dart'
       end
 
       def configure_directories
-        inject_into_file("#{working_directory}/pubspec.yaml", pub_files, after: /^dependencies:.*$/)
-        remove_file("#{lib_directory}/main.dart")
         invoke :create_directories
       end
 
       def create_directories
-        empty_directory("#{lib_directory}/src/home")
+        empty_directory("#{lib_directory}/src/screens/#{lower_name}")
+
         invoke :create_files
       end
 
       def create_files
-        template('main.dart.erb', "#{lib_directory}/main.dart")
-        template('src/app_bloc.dart.erb', "#{src_directory}/app_bloc.dart")
-        template('src/app_module.dart.erb', "#{src_directory}/app_module.dart")
-        template('src/app_widget.dart.erb', "#{src_directory}/app_widget.dart")
-        template('src/home/home_bloc.dart.erb', "#{src_directory}/home/home_bloc.dart")
-        template('src/home/home_module.dart.erb', "#{src_directory}/home/home_module.dart")
-        template('src/home/home_page.dart.erb', "#{src_directory}/home/home_page.dart")
+        template('src/screens/base_index.dart.erb', "#{screen_path}/#{lower_name}_index_screen.dart")
+        template('src/screens/base_bottom_navigation.dart.erb', "#{screen_path}/#{lower_name}_show_screen.dart")
+
+        invoke :connect_widgets
+      end
+
+      def connect_widgets
+        inject_into_file("#{src_directory}/config/router.dart", router_packages, after: /^import 'package:flutter\/material.dart';$/)
+        inject_into_file("#{src_directory}/config/router.dart", show_screen_router, after: /^.*switch \(settings.name\) \{$/)
+        inject_into_file("#{src_directory}/config/router.dart", index_screen_router, after: /^.*switch \(settings.name\) \{$/)
+        inject_into_file("#{src_directory}/constants/pages_list.dart", index_screen_route, after: /const List<Page> pages = const <Page>\[.*$/)
+        append_to_file("#{src_directory}/constants/routing.dart", "const String #{name}IndexScreenRoute = '/#{lower_name.pluralize }'; \n")
+        append_to_file("#{src_directory}/constants/routing.dart", "const String #{name}ShowScreenRoute = '/#{lower_name.singularize}';\n")
+        # Here we will make sure all imports are handled:
+        # Import new resource into routes route and constants
+        # Index page with bottom floating button for adding
+        # build detail screen with bottom navigations
+        # Link navigation buttons to Edit and back to list and delete
       end
 
       private
 
       def working_directory
-        "#{destination_root}/#{folder_name}"
+        "#{destination_root}/#{flutter_app_dir}"
       end
 
       def lib_directory
@@ -46,11 +58,39 @@ module Frap
         "#{lib_directory}/src"
       end
 
-      def pub_files
+      def screen_path
+        "#{src_directory}/screens/#{lower_name}"
+      end
+
+      def index_screen_router
         %Q(
-  dio: ^2.1.13
-  rxdart: ^0.22.0
-  bloc_pattern: ^2.2.3)
+     case #{name}IndexScreenRoute:
+      return SlideRightRoute(widget:#{name}IndexScreen());)
+      end
+
+      def index_screen_route
+        %Q(
+     const Page(title: '#{name.pluralize}', icon: Icons.home, route: #{name}IndexScreenRoute),)
+      end
+
+      def show_screen_router
+        %Q(
+     case #{name}ShowScreenRoute:
+      return SlideRightRoute(widget:#{name}ShowScreen());)
+      end
+
+      def show_screen_route
+        %Q(
+     const Page(title: '#{name}', icon: Icons.home, route: #{name}ShowScreenRoute),)
+      end
+
+      def lower_name
+        name.downcase
+      end
+      def router_packages
+%Q(
+import 'package:#{flutter_app_dir}/src/screens/#{lower_name}/#{lower_name}_index_screen.dart';
+import 'package:#{flutter_app_dir}/src/screens/#{lower_name}/#{lower_name}_show_screen.dart';)
       end
     end
   end
