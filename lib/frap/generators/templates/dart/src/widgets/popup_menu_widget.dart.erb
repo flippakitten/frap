@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:<%= folder_name %>/src/constants/pages_list.dart';
-import 'package:<%= folder_name %>/src/constants/routing.dart';
 
 class PopupMenuWidget extends StatefulWidget {
   @override
@@ -8,12 +7,11 @@ class PopupMenuWidget extends StatefulWidget {
 }
 
 class _PopupMenuWidgetState extends State<PopupMenuWidget> {
-  @override
-
   _onSelect(Page page) {
     Navigator.pushNamed(context, page.route);
   }
 
+  @override
   Widget build(BuildContext context) {
     return PopupMenuButton<Page>(
       onSelected: _onSelect,

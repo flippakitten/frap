@@ -65,7 +65,8 @@ module Frap
         %Q(
   dio: ^2.1.13
   rxdart: ^0.22.0
-  bloc_pattern: ^2.2.3)
+  bloc_pattern: ^2.2.3
+  http: ^0.12.0+2)
       end
 
       def home_router
