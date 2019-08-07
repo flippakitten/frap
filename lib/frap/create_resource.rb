@@ -18,16 +18,14 @@ module Frap
 
     def generate_rails_resource
       Dir.chdir("#{working_dir}/#{rails_app_dir}")
-
       system("rails generate resource #{name} #{fields}")
-
       Dir.chdir("#{working_dir}")
     end
 
     def generate_flutter_resource
-      fields = options[:attributes] || 'name:string'
+      flutter_fields = options[:attributes] || 'name:string'
       Frap::Generators::FlutterResource.new(
-        [name.capitalize, flutter_app_dir, fields]
+        [name.capitalize, flutter_app_dir, flutter_fields]
       ).invoke(:configure_directories)
     end
 

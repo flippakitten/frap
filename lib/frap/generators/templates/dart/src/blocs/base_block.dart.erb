@@ -9,7 +9,7 @@ class <%= @name_capitalized_plural %>Bloc {
   Observable<<%= @name_capitalized_plural %>> get all<%= @name_capitalized_plural %> => _<%= @name_downcased_plural %>Fetcher.stream;
 
   fetchAll<%= @name_capitalized_plural %>() async {
-    <%= @name_capitalized_plural > <%= @name_downcased_plural %> = await _repository.fetchAll<%= @name_capitalized_plural %>();
+    <%= @name_capitalized_plural %> <%= @name_downcased_plural %> = await _repository.fetchAll<%= @name_capitalized_plural %>();
     _<%= @name_downcased_plural%>Fetcher.sink.add(<%= @name_downcased_plural %>);
   }
 

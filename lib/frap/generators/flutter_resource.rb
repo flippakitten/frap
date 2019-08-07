@@ -30,12 +30,11 @@ module Frap
         @lower_name = lower_name
         @field_types = build_fields
         @field_names = fields.keys
-        # TODO: Create Repository during app creation
         template('src/screens/base_index.dart.erb', "#{screen_path}/#{lower_name}_index_screen.dart")
         template('src/screens/base_bottom_navigation.dart.erb', "#{screen_path}/#{lower_name}_show_screen.dart")
         template('src/blocs/base_block.dart.erb', "#{src_directory}/blocs/#{@name_downcased_plural}_bloc.dart")
         template('src/models/base_model.dart.erb', "#{src_directory}/models/#{@name_downcased_plural}.dart")
-        template('src/resources/base_api_provider.dart.erb', "#{src_directory}/resources/#{name_capitalized_single}_api_provider.dart")
+        template('src/resources/base_api_provider.dart.erb', "#{src_directory}/resources/#{lower_name}_api_provider.dart")
         invoke :connect_widgets
       end
 
@@ -145,7 +144,7 @@ import 'package:#{flutter_app_dir}/src/screens/#{lower_name}/#{lower_name}_show_
       def repository_body
   %Q(
   final #{lower_name}ApiProvider = #{name_capitalized_single}ApiProvider();
-  Future<#{name_capitalized_single}> fetchAll#{name_capitalize_pluralize}() => #{lower_name}ApiProvider.fetchAll#{name_capitalize_pluralize}();)
+  Future<#{name_capitalize_pluralize}> fetchAll#{name_capitalize_pluralize}() => #{lower_name}ApiProvider.fetchAll#{name_capitalize_pluralize}();)
       end
 
       def repository_packages

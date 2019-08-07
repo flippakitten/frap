@@ -5,7 +5,7 @@ import 'package:<%= flutter_app_dir %>/src/models/<%= @name_downcased_plural %>.
 import 'package:<%= flutter_app_dir %>/src/constants/app_constants.dart';
 
 class <%= @name_capitalized_single %>ApiProvider {
-  Future<<%= @name_capitalized_plural %>> fetchAllUsers() async {
+  Future<<%= @name_capitalized_plural %>> fetchAll<%= @name_capitalized_plural %>() async {
     final response =
     await http.get("${RootUrl}/<%= @name_downcased_plural %>");
 
