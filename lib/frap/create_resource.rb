@@ -25,8 +25,9 @@ module Frap
     end
 
     def generate_flutter_resource
+      fields = options[:attributes] || 'name:string'
       Frap::Generators::FlutterResource.new(
-        [name.capitalize, flutter_app_dir]
+        [name.capitalize, flutter_app_dir, fields]
       ).invoke(:configure_directories)
     end
 

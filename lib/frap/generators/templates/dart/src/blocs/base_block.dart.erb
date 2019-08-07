@@ -1,0 +1,21 @@
+import 'package:rxdart/rxdart.dart';
+import 'package:<%= flutter_app_dir %>/src/resources/repository.dart';
+import 'package:<%= flutter_app_dir %>/src/models/<%= @name_downcased_plural %>.dart';
+
+class <%= @name_capitalized_plural %>Bloc {
+  final _repository = Repository();
+  final _<%= @name_downcased_plural %>Fetcher = PublishSubject<<%= @name_capitalized_plural %>>();
+
+  Observable<<%= @name_capitalized_plural %>> get all<%= @name_capitalized_plural %> => _<%= @name_downcased_plural %>Fetcher.stream;
+
+  fetchAll<%= @name_capitalized_plural %>() async {
+    <%= @name_capitalized_plural > <%= @name_downcased_plural %> = await _repository.fetchAll<%= @name_capitalized_plural %>();
+    _<%= @name_downcased_plural%>Fetcher.sink.add(<%= @name_downcased_plural %>);
+  }
+
+  dispose() {
+    _<%= @name_downcased_plural %>Fetcher.close();
+  }
+}
+
+final bloc = <%= @name_capitalized_plural %>Bloc();

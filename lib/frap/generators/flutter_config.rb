@@ -28,6 +28,8 @@ module Frap
 
       def create_files
         template('main.dart.erb', "#{lib_directory}/main.dart")
+        template('src/constants/app_constants.dart.erb', "#{src_directory}/constants/app_constants.dart")
+        template('src/resources/repository.dart.erb', "#{src_directory}/resources/repository.dart")
         template('src/app.dart.erb', "#{src_directory}/app.dart")
         template('src/animations/slide_right_route.dart.erb', "#{src_directory}/animations/slide_right_route.dart")
         template('src/config/router.dart.erb', "#{src_directory}/config/router.dart")

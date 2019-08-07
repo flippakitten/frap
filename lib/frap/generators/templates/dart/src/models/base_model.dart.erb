@@ -1,0 +1,32 @@
+class <%= @name_capitalized_plural %> {
+  int _id;
+  List<<%= @name_capitalized_single %>> _results = [];
+
+  <%= @name_capitalized_plural %>.fromJson(Map<String, dynamic> parsedJson) {
+    List<<%= @name_capitalized_single %>> temp = [];
+    for (int i = 0; i < parsedJson['<%= @lower_name %>'].length; i++) {
+<%= @name_capitalized_single %> result = <%= @name_capitalized_single %>.fromJson(parsedJson['<%= @lower_name %>'][i]);
+      temp.add(result);
+    }
+    _results = temp;
+  }
+
+  List<<%= @name_capitalized_single %>> get results => _results;
+}
+
+class <%= @name_capitalized_single %> {
+  < % @field_types.each do |field| %>final <%= field %>;
+  <% end %>
+
+  <%= @name_capitalized_single %>({
+    <% @field_names.each do |field| %>this.<%= field %>,
+    <% end %>
+  });
+
+  factory <%= @name_capitalized_single %>.fromJson(Map<String, dynamic> json) {
+    return <%= @name_capitalized_single %>(
+      <% @field_names.each do |field| %><%= field %>: json['<%= field %>'],
+    <% end %>
+    );
+  }
+}
