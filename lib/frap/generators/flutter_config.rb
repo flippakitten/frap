@@ -28,6 +28,8 @@ module Frap
 
       def create_files
         template('main.dart.erb', "#{lib_directory}/main.dart")
+        template('src/constants/app_constants.dart.erb', "#{src_directory}/constants/app_constants.dart")
+        template('src/resources/repository.dart.erb', "#{src_directory}/resources/repository.dart")
         template('src/app.dart.erb', "#{src_directory}/app.dart")
         template('src/animations/slide_right_route.dart.erb', "#{src_directory}/animations/slide_right_route.dart")
         template('src/config/router.dart.erb', "#{src_directory}/config/router.dart")
@@ -44,7 +46,7 @@ module Frap
       def setup_pages
         inject_into_file("#{src_directory}/config/router.dart", home_router, after: /^.*switch \(settings.name\) \{$/)
         inject_into_file("#{src_directory}/constants/pages_list.dart", home_route, after: /const List<Page> pages = const <Page>\[.*$/)
-        append_to_file("#{src_directory}/constants/routing.dart", "const String HomeScreenRoute = '/';")
+        append_to_file("#{src_directory}/constants/routing.dart", "const String HomeScreenRoute = '/';\n")
       end
 
       private
@@ -65,7 +67,8 @@ module Frap
         %Q(
   dio: ^2.1.13
   rxdart: ^0.22.0
-  bloc_pattern: ^2.2.3)
+  bloc_pattern: ^2.2.3
+  http: ^0.12.0+2)
       end
 
       def home_router
@@ -76,7 +79,8 @@ module Frap
 
       def home_route
         %Q(
-     const Page(title: 'Home', icon: Icons.home, route: HomeScreenRoute),)
+     const Page(title: 'Home', icon: Icons.home, route: HomeScreenRoute),
+)
       end
     end
   end

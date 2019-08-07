@@ -17,15 +17,16 @@ module Frap
     private
 
     def generate_rails_resource
-      Dir.chdir("#{working_dir}/#{rails_app}")
-
+      Dir.chdir("#{working_dir}/#{rails_app_dir}")
       system("rails generate resource #{name} #{fields}")
+      Dir.chdir("#{working_dir}")
     end
 
     def generate_flutter_resource
-      Dir.chdir("#{working_dir}/#{flutter_app}")
-
-      puts "TODO: frap g flutter resource #{name} #{fields}"
+      flutter_fields = options[:attributes] || 'name:string'
+      Frap::Generators::FlutterResource.new(
+        [name.capitalize, flutter_app_dir, flutter_fields]
+      ).invoke(:configure_directories)
     end
 
     def fields
@@ -51,11 +52,11 @@ module Frap
       @config ||= YAML.load(File.read('config.yml'))
     end
 
-    def flutter_app
+    def flutter_app_dir
       config['flutter_app']
     end
 
-    def rails_app
+    def rails_app_dir
       config['rails_app']
     end
   end

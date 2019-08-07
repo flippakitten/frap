@@ -1,0 +1,57 @@
+import 'package:flutter/material.dart';
+import 'package:<%= flutter_app_dir %>/src/widgets/base_app_bar.dart';
+import 'package:<%= flutter_app_dir %>/src/widgets/popup_menu_widget.dart';
+import 'package:<%= flutter_app_dir %>/src/screens/<%= name.downcase %>/<%= name.downcase %>_index_screen.dart';
+
+class <%= name %>ShowScreen extends StatefulWidget {
+  <%= name %>ShowScreen({Key key}) : super(key: key);
+
+  @override
+  _<%= name %>ShowScreenState createState() => _<%= name %>ShowScreenState();
+}
+
+class _<%= name %>ShowScreenState extends State<<%= name %>ShowScreen> {
+  int _selectedIndex = 1;
+
+  final List<Widget> _widgets = <Widget>[
+    <%= name %>IndexScreen(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: BaseAppBar(
+        title: Text('<%= name %>'),
+        appBar: AppBar(),
+        widgets: <Widget>[
+          PopupMenuWidget(),
+        ],
+      ),
+      body: Center(
+        child: Text('<%= name %>'),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.dashboard),
+            title: Text('Back'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.monetization_on),
+            title: Text('Edit'),
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.green,
+        onTap: _onItemTapped,
+      ),
+    );
+  }
+}
