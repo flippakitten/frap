@@ -32,6 +32,30 @@ This will create a new Parent directory for the Rails and Flutter App.
   |__ my_app_server  
   |__ my_app_ui
 ```
+Generate a Rails and Flutter Resource from the app route directory `/my_app`, **currently does NOT support references, please open an ISSUE for broken data types**  
+`frap generate resource post -a title:string body:text`  
+
+The next step is to implement your Rails controller method for index action and run the migrations:
+```
+cd my_app/my_app_server
+rails db:migrate
+```
+You can then edit the `app/constrollers/posts_controller.rb`:
+```ruby
+class PostsController < ApplicationController
+  def index
+    render json: { posts: Post.all.as_json }, status: :ok
+  end
+end
+```
+Next fire up Rails and Flutter (you may need to start up an emulator, just follow the terminal output:
+```bash
+cd my_app/my_app_server
+rails s
+
+cd my_app/my_app_ui
+flutter run
+```
 
 
 ## Motivation
