@@ -10,6 +10,5 @@ final String route;
 }
 
 const List<Page> pages = const <Page>[
-     const Page(title: 'Home', icon: Icons.home, route: HomeScreenRoute),
-
+  const Page(title: 'Home', icon: Icons.home, route: HomeScreenRoute),
 ];

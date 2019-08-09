@@ -7,7 +7,7 @@ import 'package:test_app_create_spec_ui/src/screens/undefined_route_screen.dart'
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
-     case HomeScreenRoute:
+    case HomeScreenRoute:
       return SlideRightRoute(widget:HomeScreen());
     default:
       return SlideRightRoute(widget:UndefinedRouteScreen());

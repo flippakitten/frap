@@ -22,7 +22,7 @@ RSpec.configure do |config|
     end
 
     FileUtils.rm_rf("#{Dir.pwd}/frap_test_suite_app")
-    # FileUtils.rm_rf("#{Dir.pwd}/test_app_create_spec")
+    FileUtils.rm_rf("#{Dir.pwd}/test_app_create_spec")
   end
 
   def capture(stream)
