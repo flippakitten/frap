@@ -9,6 +9,7 @@ module Frap
       argument :name
       argument :flutter_app_dir
       argument :fields
+
       def self.source_root
         File.dirname(__FILE__) + '/templates/dart'
       end
@@ -47,9 +48,6 @@ module Frap
         inject_into_file("#{src_directory}/resources/repository.dart", repository_body, after: /^class Repository \{$/)
         append_to_file("#{src_directory}/constants/routing.dart", "const String #{name}IndexScreenRoute = '/#{lower_name.pluralize }'; \n")
         append_to_file("#{src_directory}/constants/routing.dart", "const String #{name}ShowScreenRoute = '/#{lower_name.singularize}';\n")
-        # Here we will make sure all imports are handled:
-        # Import new resource into routes route and constants
-        # Index page with bottom floating button for adding
         # build detail screen with bottom navigations
         # Link navigation buttons to Edit and back to list and delete
       end

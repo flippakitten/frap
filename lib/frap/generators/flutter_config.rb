@@ -19,6 +19,9 @@ module Frap
 
       def create_directories
         empty_directory("#{lib_directory}/src/animations")
+        empty_directory("#{lib_directory}/src/blocs")
+        empty_directory("#{lib_directory}/src/models")
+        empty_directory("#{lib_directory}/src/resources")
         empty_directory("#{lib_directory}/src/config")
         empty_directory("#{lib_directory}/src/constants")
         empty_directory("#{lib_directory}/src/screens")

@@ -17,7 +17,7 @@ module Frap
     private
 
     def setup_parent_directory
-      shell.say(shell_text("Create Parent Directory #{name}"), :green)
+      shell.say(shell_text("Create Parent Directory #{name} in #{start_directory}"), :green)
 
       Frap::Generators::Config.new(
         [name],
@@ -74,6 +74,7 @@ module Frap
       shell.say("flutter run", :green)
 
       shell.say(shell_text('========================'), :green)
+      Dir.chdir(start_directory)
     end
 
     def server_name
@@ -86,6 +87,10 @@ module Frap
 
     def working_dir
       @working_dir ||= "#{Dir.pwd}/#{name}"
+    end
+
+    def start_directory
+      @start_directory ||= Dir.pwd
     end
 
     def shell
