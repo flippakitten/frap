@@ -36,5 +36,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 2.0.2"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.7.0"
-  spec.add_development_dependency "railties", "~> 5.2.3"
+  spec.add_development_dependency "bootsnap", "1.1.0"
+  spec.add_development_dependency "rails", "5.2.3"
+  spec.add_development_dependency "listen", "~> 3.1.5"
+  spec.add_development_dependency "sqlite3", "~> 1.3"
 end
