@@ -12,6 +12,19 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 
+  config.before(:suite) do
+
+  end
+
+  config.after(:suite) do
+    if Dir.pwd.include?('test_app_create_spec') || Dir.pwd.include?('frap_test_suite_app')
+      raise StandardError.new("Currently in #{Dir.pwd} directory and you shouldn't be, check")
+    end
+
+    FileUtils.rm_rf("#{Dir.pwd}/frap_test_suite_app")
+    # FileUtils.rm_rf("#{Dir.pwd}/test_app_create_spec")
+  end
+
   def capture(stream)
     begin
       stream = stream.to_s
