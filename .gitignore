@@ -15,4 +15,5 @@
 
 *.gem
 /test_app/**/*
-
+/frap_test_suite_app/**/*
+/test_app_create_spec/**/*

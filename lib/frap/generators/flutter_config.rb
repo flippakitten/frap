@@ -19,6 +19,9 @@ module Frap
 
       def create_directories
         empty_directory("#{lib_directory}/src/animations")
+        empty_directory("#{lib_directory}/src/blocs")
+        empty_directory("#{lib_directory}/src/models")
+        empty_directory("#{lib_directory}/src/resources")
         empty_directory("#{lib_directory}/src/config")
         empty_directory("#{lib_directory}/src/constants")
         empty_directory("#{lib_directory}/src/screens")
@@ -64,23 +67,25 @@ module Frap
       end
 
       def pub_files
-        %Q(
-  dio: ^2.1.13
-  rxdart: ^0.22.0
-  bloc_pattern: ^2.2.3
-  http: ^0.12.0+2)
+        <<~EOF.chomp
+          \n  dio: ^2.1.13
+            rxdart: ^0.22.0
+            bloc_pattern: ^2.2.3
+            http: ^0.12.0+2
+        EOF
       end
 
       def home_router
-        %Q(
-     case HomeScreenRoute:
-      return SlideRightRoute(widget:HomeScreen());)
+        <<~EOF.chomp
+          \n    case HomeScreenRoute:
+                return SlideRightRoute(widget:HomeScreen());
+        EOF
       end
 
       def home_route
-        %Q(
-     const Page(title: 'Home', icon: Icons.home, route: HomeScreenRoute),
-)
+        <<~EOF.chomp
+          \n  const Page(title: 'Home', icon: Icons.home, route: HomeScreenRoute),
+        EOF
       end
     end
   end
