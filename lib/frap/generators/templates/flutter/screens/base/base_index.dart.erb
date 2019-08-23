@@ -1,0 +1,91 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:<%= flutter_app_name %>/bloc/bloc.dart';
+import 'package:<%= flutter_app_name %>/models/models.dart';
+import 'package:<%= flutter_app_name %>/widgets/bottom_loader.dart';
+
+class <%= @name_capitalized_single %>Index extends StatefulWidget {
+  @override
+  _<%= @name_capitalized_single %>IndexState createState() => _<%= @name_capitalized_single %>IndexState();
+}
+
+class _<%= @name_capitalized_single %>IndexState extends State<<%= @name_capitalized_single %>Index> {
+  final _scrollController = ScrollController();
+  final _scrollThreshold = 200.0;
+  <%= @name_capitalized_single %>Bloc _<%= @name_downcase_single %>Bloc;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_onScroll);
+    _<%= @name_downcase_single %>Bloc = BlocProvider.of<<%= @name_capitalized_single %>Bloc>(context);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<<%= @name_capitalized_single %>Bloc, <%= @name_capitalized_single %>State>(
+      builder: (context, state) {
+        if (state is <%= @name_capitalized_single %>Error) {
+          return Center(
+            child: Text('failed to fetch <%= @name_downcase_plural %>'),
+          );
+        }
+        if (state is <%= @name_capitalized_single %>Loaded) {
+          if (state.<%= @name_downcase_plural %>.isEmpty) {
+            return Center(
+              child: Text('no <%= @name_downcase_plural %>'),
+            );
+          }
+          return ListView.builder(
+            itemBuilder: (BuildContext context, int index) {
+              return index >= state.<%= @name_downcase_plural %>.length
+                  ? BottomLoader()
+                  : <%= @name_capitalized_single %>Widget(<%= @name_downcase_single %>: state.<%= @name_downcase_plural %>[index]);
+            },
+            itemCount: state.hasReachedMax
+                ? state.<%= @name_downcase_plural %>.length
+                : state.<%= @name_downcase_plural %>.length + 1,
+            controller: _scrollController,
+          );
+        }
+        return Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _onScroll() {
+    final maxScroll = _scrollController.position.maxScrollExtent;
+    final currentScroll = _scrollController.position.pixels;
+    if (maxScroll - currentScroll <= _scrollThreshold) {
+      _<%= @name_downcase_single %>Bloc.dispatch(Fetch());
+    }
+  }
+}
+
+class <%= @name_capitalized_single %>Widget extends StatelessWidget {
+  final <%= @name_capitalized_single %> <%= @name_downcase_single %>;
+
+  const <%= @name_capitalized_single %>Widget({Key key, @required this.<%= @name_downcase_single %>}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: Text(
+        '${<%= @name_downcase_single %>.id}',
+        style: TextStyle(fontSize: 10.0),
+      ),
+      title: Text(<%= @name_downcase_single %>.title),
+      isThreeLine: true,
+      subtitle: Text(<%= @name_downcase_single %>.body),
+      dense: true,
+    );
+  }
+}

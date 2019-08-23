@@ -1,0 +1,16 @@
+import 'package:equatable/equatable.dart';
+
+class <%= @name_capitalized_single %> extends Equatable {
+  <% @field_types.each do |field| %>final <%= field %>;
+  <% end %>
+
+  <%= @name_capitalized_single %>({
+  <% @field_names.each do |field| %>this.<%= field %>,
+  <% end %>
+  }) : super([
+  <% @field_names.each do |field| %><%= field %>,
+  ]);
+
+  @override
+  String toString() => 'Post { id: $id }';
+}

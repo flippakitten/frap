@@ -1,0 +1,29 @@
+import 'dart:convert';
+import 'dart:async';
+
+import 'package:http/http.dart' as http;
+import 'package:<%= flutter_app_name %>/models/models.dart';
+import 'package:<%= flutter_app_name %>/congif/constants/app_constants.dart'
+class <%= @name_capitalized_single %>ApiClient {
+  final http.Client httpClient = http.Client();
+
+  Future<List<<%= @name_capitalized_single %>>> fetch<%= @name_capitalized_plural %>(int startIndex, int limit) async {
+    final <%= @name_downcase_single %>Url = '$rootUrl/<%= @name_downcase_plural %> ?_start=$startIndex&_limit=$limit';
+    final <%= @name_downcase_single %>Response = await this.httpClient.get(<%= @name_downcase_single %>Url);
+
+    if (<%= @name_downcase_single %>Response.statusCode != 200) {
+      throw Exception('error getting <%= @name_downcase_plural %>');
+    }
+
+    final data = json.decode(<%= @name_downcase_single %>Response.body) as List;
+
+    return data.map((raw%= @name_capitalized_single %>) {
+      return %= @name_capitalized_single %>(
+        # TODO: Implement loop here to handle fields
+        id: raw%= @name_capitalized_single %>['id'],
+        title: raw%= @name_capitalized_single %>['title'],
+        body: raw%= @name_capitalized_single %>['body'],
+      );
+    }).toList();
+  }
+}

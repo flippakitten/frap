@@ -1,0 +1,8 @@
+import 'package:equatable/equatable.dart';
+
+abstract class <%= @name_capitalized_single %>Event extends Equatable {}
+
+class Fetch extends <%= @name_capitalized_single %>Event {
+  @override
+  String toString() => 'Fetch';
+}

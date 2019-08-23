@@ -1,0 +1,53 @@
+import 'dart:async';
+import 'package:rxdart/rxdart.dart';
+import 'package:bloc/bloc.dart';
+import 'package:<%= flutter_app_name %>/bloc/bloc.dart';
+import 'package:<%= flutter_app_name %>/repositories/repositories.dart';
+
+class <%= @name_capitalized_single %>Bloc extends Bloc<<%= @name_capitalized_single %>Event, <%= @name_capitalized_single %>State> {
+  final <%= @name_capitalized_single %>Repository <%= @name_downcase_single %>Repository = <%= @name_capitalized_single %>Repository();
+
+  @override
+  Stream<<%= @name_capitalized_single %>State> transform(
+      Stream<<%= @name_capitalized_single %>Event> events,
+      Stream<<%= @name_capitalized_single %>State> Function(<%= @name_capitalized_single %>Event event) next,
+      ) {
+    return super.transform(
+      (events as Observable<<%= @name_capitalized_single %>Event>).debounceTime(
+        Duration(milliseconds: 500),
+      ),
+      next,
+    );
+  }
+
+  @override
+  get initialState => <%= @name_capitalized_single %>Uninitialized();
+
+  @override
+  Stream<<%= @name_capitalized_single %>State> mapEventToState(<%= @name_capitalized_single %>Event event) async* {
+    if (event is Fetch && !_hasReachedMax(currentState)) {
+      try {
+        if (currentState is <%= @name_capitalized_single %>Uninitialized) {
+          final <%= @name_downcase_plural %> = await <%= @name_downcase_single %>Repository.fetch<%= @name_capitalized_plural %>(0, 20);
+          yield <%= @name_capitalized_single %>Loaded(<%= @name_downcase_plural %>: <%= @name_downcase_plural %>, hasReachedMax: false);
+          return;
+        }
+        if (currentState is <%= @name_capitalized_single %>Loaded) {
+          final <%= @name_downcase_plural %> =
+          await <%= @name_downcase_single %>Repository.fetch<%= @name_capitalized_plrual %>((currentState as <%= @name_capitalized_single %>Loaded).<%= @name_downcase_plural %>.length, 20);
+
+          yield <%= @name_downcase_plural %>.isEmpty
+              ? (currentState as <%= @name_capitalized_single %>Loaded).copyWith(hasReachedMax: true)
+              : <%= @name_capitalized_single %>Loaded(
+                  <%= @name_downcase_plural %>: (currentState as <%= @name_capitalized_single %>Loaded).<%= @name_downcase_plural %> + <%= @name_downcase_plural %>,
+                  hasReachedMax: false,
+                );
+        }
+      } catch (_) {
+        yield <%= @name_capitalized_single %>Error();
+      }
+    }
+  }
+
+  bool _hasReachedMax(<%= @name_capitalized_single %>State state) => state is <%= @name_capitalized_single %>Loaded && state.hasReachedMax;
+}

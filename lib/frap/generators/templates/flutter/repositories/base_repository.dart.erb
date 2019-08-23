@@ -1,0 +1,11 @@
+import 'dart:async';
+import 'package:<%= flutter_app_name %>/repositories/<%= @name_downcase_single %>_api_client.dart';
+import 'package:<%= flutter_app_name %>/models/models.dart';
+
+class <%= @name_capitalized_single %>Repository {
+  final <%= @name_capitalized_single %>ApiClient <%= @name_downcase_single %>ApiClient = <%= @name_capitalized_single %>ApiClient();
+
+  Future<List<<%= @name_capitalized_single %>>> fetch<%= @name_capitalized_plural %>(int startIndex, int limit) async {
+    return await <%= @name_downcase_single %>ApiClient.fetch<%= @name_capitalized_plural %>(startIndex, limit);
+  }
+}

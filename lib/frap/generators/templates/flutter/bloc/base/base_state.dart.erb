@@ -1,0 +1,41 @@
+import 'package:equatable/equatable.dart';
+
+import 'package:<%= flutter_app_name %>/models/models.dart';
+
+abstract class <%= @name_capitalized_single %>State extends Equatable {
+<%= @name_capitalized_single %>State([List props = const []]) : super(props);
+}
+
+class <%= @name_capitalized_single %>Uninitialized extends <%= @name_capitalized_single %>State {
+  @override
+  String toString() => '<%= @name_capitalized_single %>Uninitialized';
+}
+
+class <%= @name_capitalized_single %>Error extends <%= @name_capitalized_single %>State {
+  @override
+  String toString() => '<%= @name_capitalized_single %>Error';
+}
+
+class <%= @name_capitalized_single %>Loaded extends <%= @name_capitalized_single %>State {
+  final List<<%= @name_capitalized_single %>> <%= @name_downcase_plural %>;
+  final bool hasReachedMax;
+
+  <%= @name_capitalized_single %>Loaded({
+    this.<%= @name_downcase_plural %>,
+    this.hasReachedMax,
+  }) : super([<%= @name_downcase_plural %>, hasReachedMax]);
+
+  <%= @name_capitalized_single %>Loaded copyWith({
+    List<<%= @name_capitalized_single %>> <%= @name_downcase_plural %>,
+    bool hasReachedMax,
+  }) {
+    return <%= @name_capitalized_single %>Loaded(
+      <%= @name_downcase_plural %>: <%= @name_downcase_plural %> ?? this.<%= @name_downcase_plural %>,
+      hasReachedMax: hasReachedMax ?? this.hasReachedMax,
+    );
+  }
+
+  @override
+  String toString() =>
+      '<%= @name_capitalized_single %>Loaded { <%= @name_downcase_plural %>: ${<%= @name_downcase_plural %>.length}, hasReachedMax: $hasReachedMax }';
+}

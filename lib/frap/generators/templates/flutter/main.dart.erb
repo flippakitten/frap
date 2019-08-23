@@ -1,0 +1,9 @@
+import 'package:flutter/material.dart';
+import 'package:bloc/bloc.dart';
+import 'package:<%= flutter_app_name %>/bloc/bloc.dart';
+import 'package:<%= flutter_app_name %>/app.dart';
+
+void main() {
+  BlocSupervisor.delegate = SimpleBlocDelegate();
+  runApp(App());
+}
