@@ -5,7 +5,7 @@ class Posts {
   Posts.fromJson(Map<String, dynamic> parsedJson) {
     List<Post> temp = [];
     for (int i = 0; i < parsedJson['posts'].length; i++) {
-Post result = Post.fromJson(parsedJson['posts'][i]);
+      Post result = Post.fromJson(parsedJson['posts'][i]);
       temp.add(result);
     }
     _results = temp;

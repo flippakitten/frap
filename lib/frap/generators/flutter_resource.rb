@@ -104,7 +104,7 @@ module Frap
 
       def index_screen_route
         <<~EOF.chomp
-          \n     const Page(title: '#{name.pluralize}', icon: Icons.home, route: #{name}IndexScreenRoute),
+          \n  const Page(title: '#{name.pluralize}', icon: Icons.home, route: #{name}IndexScreenRoute),
         EOF
       end
 

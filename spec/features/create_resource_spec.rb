@@ -87,13 +87,6 @@ RSpec.describe Frap::CreateResource do
           expect(FileUtils.compare_file(file, expected_file)).to be_truthy
         end
 
-        it 'populates pages_list.dart' do
-          file = "#{ui_src_directory}/constants/pages_list.dart"
-          expected_file = "#{fixtures_directory}/constants/pages_list.dart"
-
-          expect(FileUtils.compare_file(file, expected_file)).to be_truthy
-        end
-
         it 'populates repository.dart' do
           file = "#{ui_src_directory}/resources/repository.dart"
           expected_file = "#{fixtures_directory}/resources/repository.dart"
