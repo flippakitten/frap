@@ -5,7 +5,7 @@ class <%= @name_capitalized_plural %> {
   <%= @name_capitalized_plural %>.fromJson(Map<String, dynamic> parsedJson) {
     List<<%= @name_capitalized_single %>> temp = [];
     for (int i = 0; i < parsedJson['<%= @name_downcased_plural %>'].length; i++) {
-<%= @name_capitalized_single %> result = <%= @name_capitalized_single %>.fromJson(parsedJson['<%= @name_downcased_plural %>'][i]);
+      <%= @name_capitalized_single %> result = <%= @name_capitalized_single %>.fromJson(parsedJson['<%= @name_downcased_plural %>'][i]);
       temp.add(result);
     }
     _results = temp;
