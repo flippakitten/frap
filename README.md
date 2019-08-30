@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.com/flippakitten/frap.svg?branch=master)](https://travis-ci.com/flippakitten/frap)
-[![Gem Version](https://badge.fury.io/rb/frap.svg)](https://badge.fury.io/rb/frap) [![Join the chat at https://gitter.im/frap-flutter-rails-cli/community](https://badges.gitter.im/frap-flutter-rails-cli/community.svg)](https://gitter.im/frap-flutter-rails-cli/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Gem Version](https://badge.fury.io/rb/frap.svg)](https://badge.fury.io/rb/frap) 
+[![Join the chat at https://gitter.im/frap-flutter-rails-cli/community](https://badges.gitter.im/frap-flutter-rails-cli/community.svg)](https://gitter.im/frap-flutter-rails-cli/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Maintainability](https://api.codeclimate.com/v1/badges/4a8f6e079b127cdb0b79/maintainability)](https://codeclimate.com/github/flippakitten/frap/maintainability)
 # Frap 
 CLI interface to quickly prototype Flutter App's using the BLoC pattern with a Rails API server.  
 

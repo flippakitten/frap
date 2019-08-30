@@ -1,10 +1,19 @@
----
 sudo: false
 language: ruby
 cache: bundler
+global:
+  - secure: RPfE8eyc6re4+Odpe+UU/gZXg25VK0ISg25iPcSuoRuawTATHlA5HWtzMl/i89BEcsAgGLPR2lHJkQUXBTAkGQxV2M9YMkzm17yNRqBueOTFl2Wq7enKKrQLJaA70zeAKfYtpwBTCG1krYoSs279JkoFENZakbKnwammq01ICmjFuW1iXKadJmpzxCu9CwTtgjPsXt4CoMmdqANL9Z6jjtcBur1P4uG2yiaJQS4uxZTGPdhJZi7SLjWNXgAqDQiyQSXBXZpeH2/MIUwNtaIm3P4QO4Rg7XIam/YS2cPR2Sj1Bo9YIROa6D2WsLoWidJAeoChatUyYIxTD7CBQFd99YA300SVlwL1Da5g8Je42mqSwPCyg8JqDEgAAemcIQl3o+EaPbla7HgVCfoI93J1f/rplPJk7k2HBwnlQnRFUcYUU48oJ+z8T3IVoIb7H+TOsEFi2wLkZtmLrmhpWgp9WgySqmvnOU2D6iF7ajzf2hMigy4VRJ3mug5xXbTKIT+DCxmw7fGLSdYMNHk377DE5xIJSNvOyc5U5UlseqYbeRiOMchIfuT5jNsWUBXg3ZDoDEaVPwU77i5RjVgoOh9H4a2EQKJkGiz3k1iJq0i8AyVflmE0DmyfWAxJPHhLgMbVDb2JyQA4PLUGUvwVsB4JBPLNg8K9ubgN4W1PkfKN0co=
 rvm:
   - 2.6.1
 before_install:
   - gem install bundler -v 2.0.2
   - git clone https://github.com/flutter/flutter.git
   - export PATH="$PATH:`pwd`/flutter/bin"
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+script:
+  - bundle exec rspec
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
