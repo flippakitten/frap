@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:<%= flutter_app_name %>/bloc/bloc.dart';
-import 'package:<%= flutter_app_name %>/screens/<%= @name_downcased_single %>/<%= @name_downcased_single %>_index_page.dart';
+import 'package:<%= name %>/bloc/bloc.dart';
+import 'package:<%= name %>/screens/<%= @name_downcased_single %>/<%= @name_downcased_single %>_index_page.dart';
 
 class <%= @name_capitalized_single %>Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: '<%= flutter_app_name %>',
+      title: '<%= name %>',
       home: Scaffold(
         appBar: AppBar(
           title: Text('<%= @name_capitalized_single %>s'),

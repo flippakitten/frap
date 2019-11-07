@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:rxdart/rxdart.dart';
 import 'package:bloc/bloc.dart';
-import 'package:<%= flutter_app_name %>/bloc/bloc.dart';
-import 'package:<%= flutter_app_name %>/repositories/repositories.dart';
+import 'package:<%= name %>/bloc/bloc.dart';
+import 'package:<%= name %>/repositories/repositories.dart';
 
 class <%= @name_capitalized_single %>Bloc extends Bloc<<%= @name_capitalized_single %>Event, <%= @name_capitalized_single %>State> {
   final <%= @name_capitalized_single %>Repository <%= @name_downcase_single %>Repository = <%= @name_capitalized_single %>Repository();
