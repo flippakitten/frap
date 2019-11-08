@@ -10,7 +10,7 @@ class <%= @name_capitalized_single %> extends Equatable {
   }) : super([
   <% @field_names.each do |field| %><%= field %>,
   ]);
-
+  <% end %>
   @override
   String toString() => 'Post { id: $id }';
 }

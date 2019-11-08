@@ -33,8 +33,8 @@ module Frap
         @field_names = fields.keys
         template('screens/base/base_index.dart.erb', "#{screen_path}/#{lower_name}_index_screen.dart")
         template('screens/base/base_bottom_navigation.dart.erb', "#{screen_path}/#{lower_name}_show_screen.dart")
-        template('bloc/base/base_block.dart.erb', "#{lib_directory}/bloc/#{name_downcased_pluralize}_bloc.dart")
-        template('models/base_model.dart.erb', "#{lib_directory}/models/#{name_downcased_pluralize}.dart")
+        template('bloc/base/base_bloc.dart.erb', "#{lib_directory}/bloc/#{name_downcased_pluralize}_bloc.dart")
+        template('models/base.dart.erb', "#{lib_directory}/models/#{name_downcased_pluralize}.dart")
         template('resources/base_api_provider.dart.erb', "#{lib_directory}/resources/#{lower_name}_api_provider.dart")
         invoke :connect_widgets
       end
@@ -43,11 +43,11 @@ module Frap
         inject_into_file("#{lib_directory}/config/router.dart", router_packages, after: /^import 'package:flutter\/material.dart';$/)
         inject_into_file("#{lib_directory}/config/router.dart", show_screen_router, after: /^.*switch \(settings.name\) \{$/)
         inject_into_file("#{lib_directory}/config/router.dart", index_screen_router, after: /^.*switch \(settings.name\) \{$/)
-        inject_into_file("#{lib_directory}/constants/pages_list.dart", index_screen_route, after: /const List<Page> pages = const <Page>\[.*$/)
-        inject_into_file("#{lib_directory}/resources/repository.dart", repository_packages, after: /^import 'dart:async';$/)
-        inject_into_file("#{lib_directory}/resources/repository.dart", repository_body, after: /^class Repository \{$/)
-        append_to_file("#{lib_directory}/constants/routing.dart", "const String #{name}IndexScreenRoute = '/#{lower_name.pluralize }'; \n")
-        append_to_file("#{lib_directory}/constants/routing.dart", "const String #{name}ShowScreenRoute = '/#{lower_name.singularize}';\n")
+        inject_into_file("#{lib_directory}/config/constants/pages_list.dart", index_screen_route, after: /const List<Page> pages = const <Page>\[.*$/)
+        inject_into_file("#{lib_directory}/repositories/repositories.dart", repository_packages, after: /^import 'dart:async';$/)
+        inject_into_file("#{lib_directory}/repositories/repositories.dart", repository_body, after: /^class Repository \{$/)
+        append_to_file("#{lib_directory}/config/constants/routing.dart", "const String #{name}IndexScreenRoute = '/#{lower_name.pluralize }'; \n")
+        append_to_file("#{lib_directory}/config/constants/routing.dart", "const String #{name}ShowScreenRoute = '/#{lower_name.singularize}';\n")
         # build detail screen with bottom navigations
         # Link navigation buttons to Edit and back to list and delete
       end
