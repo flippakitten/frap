@@ -30,14 +30,14 @@ Gem::Specification.new do |spec|
   spec.bindir        = "bin"
   spec.executables   = ['frap']
   spec.require_paths = ["lib"]
-  spec.required_ruby_version = '>= 2.6.1'
+  spec.required_ruby_version = '>= 2.6.5'
   spec.add_dependency 'thor', '~> 0.20.3'
 
   spec.add_development_dependency "bundler", "~> 2.0.2"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.7.0"
   spec.add_development_dependency "bootsnap", "1.1.0"
-  spec.add_development_dependency "rails", "5.2.3"
+  spec.add_development_dependency "rails", "6.0.1"
   spec.add_development_dependency "listen", "~> 3.1.5"
   spec.add_development_dependency "sqlite3", "~> 1.3"
 end
