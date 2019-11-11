@@ -1,5 +1,5 @@
 RSpec.describe Frap::CreateResource do
-  let(:app_name) { 'frap_test_suite_app' }
+  let(:app_name) { 'frap_test_suite_app_0_3_0' }
   let(:resource_name) { 'post' }
   let(:server_directory) { "#{app_name}_server" }
   let(:ui_directory) { "#{app_name}_ui" }
@@ -8,13 +8,13 @@ RSpec.describe Frap::CreateResource do
   let(:create_resource) { Frap::CreateResource.new(resource_name, options).create_resource }
 
   before(:all) do
-    system('git clone https://github.com/flippakitten/frap_test_suite_app.git')
-    Dir.chdir('frap_test_suite_app')
+    system('git clone https://github.com/flippakitten/frap_test_suite_app_0_3_0.git')
+    Dir.chdir('frap_test_suite_app_0_3_0')
   end
 
   after(:all) do
     Dir.chdir('../')
-    FileUtils.rm_rf("#{Dir.pwd}/frap_test_suite_app")
+    FileUtils.rm_rf("#{Dir.pwd}/frap_test_suite_app_0_3_0")
   end
 
   context 'with valid attributes' do

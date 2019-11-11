@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:frap_test_suite_app_ui/src/widgets/base_app_bar.dart';
-import 'package:frap_test_suite_app_ui/src/widgets/popup_menu_widget.dart';
-import 'package:frap_test_suite_app_ui/src/screens/post/post_index_screen.dart';
+import 'package:frap_test_suite_app_0_3_0_ui/src/widgets/base_app_bar.dart';
+import 'package:frap_test_suite_app_0_3_0_ui/src/widgets/popup_menu_widget.dart';
+import 'package:frap_test_suite_app_0_3_0_ui/src/screens/post/post_index_screen.dart';
 
 class PostShowScreen extends StatefulWidget {
   PostShowScreen({Key key}) : super(key: key);

@@ -1,6 +1,6 @@
 import 'package:rxdart/rxdart.dart';
-import 'package:frap_test_suite_app_ui/src/resources/repository.dart';
-import 'package:frap_test_suite_app_ui/src/models/posts.dart';
+import 'package:frap_test_suite_app_0_3_0_ui/src/resources/repository.dart';
+import 'package:frap_test_suite_app_0_3_0_ui/src/models/posts.dart';
 
 class PostsBloc {
   final _repository = Repository();

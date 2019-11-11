@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:frap_test_suite_app_ui/src/models/blogs.dart';
-import 'package:frap_test_suite_app_ui/src/constants/app_constants.dart';
+import 'package:frap_test_suite_app_0_3_0_ui/src/models/blogs.dart';
+import 'package:frap_test_suite_app_0_3_0_ui/src/constants/app_constants.dart';
 
 class BlogApiProvider {
   Future<Blogs> fetchAllBlogs() async {

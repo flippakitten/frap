@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:frap_test_suite_app_ui/src/widgets/base_app_bar.dart';
-import 'package:frap_test_suite_app_ui/src/widgets/popup_menu_widget.dart';
-import 'package:frap_test_suite_app_ui/src/models/posts.dart';
-import 'package:frap_test_suite_app_ui/src/blocs/posts_bloc.dart';
+import 'package:frap_test_suite_app_0_3_0_ui/src/widgets/base_app_bar.dart';
+import 'package:frap_test_suite_app_0_3_0_ui/src/widgets/popup_menu_widget.dart';
+import 'package:frap_test_suite_app_0_3_0_ui/src/models/posts.dart';
+import 'package:frap_test_suite_app_0_3_0_ui/src/blocs/posts_bloc.dart';
 
 class PostIndexScreen extends StatefulWidget {
   @override
