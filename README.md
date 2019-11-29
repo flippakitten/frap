@@ -12,8 +12,8 @@ CLI interface to quickly prototype Flutter App's using the BLoC pattern with a R
 
 Ensure the following are installed:
 * [Flutter](https://flutter.dev/docs/get-started/install)
-* [Ruby 2.6.1](https://rvm.io/rvm/install) (I've used RVM but you can install it anyway)
-* Rails
+* [Ruby 2.6.5](https://rvm.io/rvm/install) (I've used RVM but you can install it anyway)
+* Rails 6.0.1
 
 ## Installation
 
